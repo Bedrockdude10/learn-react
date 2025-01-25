@@ -12,17 +12,25 @@ function Avatar({ person, size = 100 }: AvatarProps) {
   );
 }
 
-export default function Profile() {
+export function Profile({ person, profession, awards, discoveries }: ProfileProps) {
   return (
-    <div>
-        <Avatar
-            person={{ name: 'Woon sen', imageId: 'OKS67lh'}}
-            size={200} />
-        <Avatar
-            person={{ name: 'Ron Ayah', imageId: 'YfeOqp2'}}
-            size={150} />
-        <Avatar
-            person={{ name: 'Pani Dom', imageId: '1bX5QH6'}} />
-    </div>
+    <section className="profile">
+      <h2>{person.name}</h2>
+      <Avatar person={person} size={70} />
+      <ul>
+        <li>
+          <b>Profession: </b>
+          {profession}
+        </li>
+        <li>
+          <b>Awards: </b>
+          {awards}
+        </li>
+        <li>
+          <b>Discovered: </b>
+          {discoveries}
+        </li>
+      </ul>
+    </section>
   );
 }
