@@ -11,6 +11,11 @@ export default function List() {
     initialArtists
   );
 
+  function handleDelete(artistId: number) {
+    // Create a new array that excludes the artist with the given id
+    setArtists(artists => artists.filter(artist => artist.id !== artistId));
+  }
+
   return (
     <>
       <h1>Inspiring sculptors:</h1>
@@ -19,7 +24,7 @@ export default function List() {
           <li key={artist.id}>
             {artist.name}{' '}
             <button onClick={() => {
-              artists.splice(artist.id, 1)
+              handleDelete(artist.id)
             }}>
               Delete
             </button>

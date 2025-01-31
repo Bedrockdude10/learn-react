@@ -4,12 +4,15 @@
 // import styles from '@/styles/Home.module.css'
 import Profile from './components/profile'
 import PackingList from './qcomps/props_item'
-import List from './components/list_plain'
 import RecipeList from './qcomps/recipes'
 import Gallery from './components/state'
+import Form from './qcomps/stuckForm'
+import RequestTracker from './qcomps/shoppingCart'
+import Scoreboard from './qcomps/updObjectsForm'
+import List from './qcomps/artistsRemoveArr'
 
 export default function Home() {
   return (
-    <Gallery/>
+    <List/>
   )
 }
