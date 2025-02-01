@@ -9,29 +9,30 @@ const initialList = [
 ];
 
 export default function BucketList() {
-  const [myList, setMyList] = useState(initialList);
+   // Create deep copies of the initial list for each state so they don't share references.
+   const [myList, setMyList] = useState(
+    initialList.map(item => ({ ...item }))
+  );
   const [yourList, setYourList] = useState(
-    initialList
+    initialList.map(item => ({ ...item }))
   );
 
   function handleToggleMyList(artworkId: number, nextSeen: boolean) {
-    const tmpList = myList.map(e => {
-        if (e.id === artworkId) {
-            e.seen = nextSeen
-        }
-        return e
-    });
-    setMyList(tmpList);
+    // Create a new array with updated objects for myList
+    setMyList(prevList =>
+      prevList.map(e =>
+        e.id === artworkId ? { ...e, seen: nextSeen } : e
+      )
+    );
   }
 
   function handleToggleYourList(artworkId: number, nextSeen: boolean) {
-    const tmpList = yourList.map(e => {
-        if (e.id === artworkId) {
-            e.seen = nextSeen
-        }
-        return e
-    });
-    setYourList(tmpList);
+    // Create a new array with updated objects for yourList
+    setYourList(prevList =>
+      prevList.map(e =>
+        e.id === artworkId ? { ...e, seen: nextSeen } : e
+      )
+    );
   }
 
   return (
